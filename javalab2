@@ -1,0 +1,135 @@
+import java.util.IntSummaryStatistics;
+import java.util.Scanner;
+
+public class Var{
+
+    public static void main(String[] args){
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("enter your choice of operation to be performed");
+        System.out.println("_1_AVERAGE_2_SEARCH_NUMBER_3_reversing_4_cipher");
+        int numb=scanner.nextInt();
+        switch(numb)
+        {
+        case 1:
+            System.out.println("enter the count of numbers for which average is needed to be found ");
+            int count=scanner.nextInt();
+            int[] arrayforaverage= new int[count];
+            for(int i=0;i<count;i++)
+               {
+                 System.out.println("enter the digit at place "+i);
+                 arrayforaverage[i]=scanner.nextInt();
+               } 
+               arrayavg(arrayforaverage);
+               break;
+        case 2:
+            System.out.println("enter the number of integers in the array to be searched");
+            int numberofdigits=scanner.nextInt();
+            int[] arraytobesearched= new int[numberofdigits];
+            for(int i=0;i<arraytobesearched.length;i++)
+               {
+                 System.out.println("enter the digit at place "+i);
+                 arraytobesearched[i]=scanner.nextInt();
+               } 
+               System.out.println("enter the number to be searched");
+               int key=scanner.nextInt();
+               arraycontains(arraytobesearched,key);
+               break;
+        case 3:
+            System.out.println("enter the number of digits in a array to be reversed");
+            int n=scanner.nextInt();
+            int[] arraytobereversed= new int[n];
+            for(int i=0;i<arraytobereversed.length;i++)
+               {
+                 System.out.println("enter the digit at place "+i);
+                 arraytobereversed[i]=scanner.nextInt();
+               } 
+               arrayreverse(arraytobereversed,n);
+               break;
+        case 4:
+            System.out.println(" enter the string to be encrypted ");
+            String stringtoencrypt = scanner.next();
+            System.out.println(" enter the shiftvalue ");
+            int shiftvalue = scanner.nextInt();
+            String newstring = Ceaser_cipher(stringtoencrypt, shiftvalue);
+            System.out.println("Encrypted string is "+newstring);
+            break;
+    }
+    }
+    public static String Ceaser_cipher(String stringtoencrypt,int shiftvalue){
+        String newstring = "";
+        char alphabet;
+        for(int i=0 ; i < stringtoencrypt.length();i++)
+        {
+          alphabet = stringtoencrypt.charAt(i);
+         // if alphabet lies between a and z 
+         if(alphabet >= 'a' && alphabet <= 'z') 
+         {
+          // shift alphabet
+          alphabet = (char) (alphabet + shiftvalue);
+          // if shift alphabet greater than 'z'
+          if(alphabet > 'z') {
+             // reshift to starting position 
+             alphabet = (char) (alphabet+'a'-'z'-1);
+          }
+          newstring = newstring + alphabet;
+         }
+         
+         // if alphabet lies between 'A'and 'Z'
+         else if(alphabet >= 'A' && alphabet <= 'Z') {
+          // shift alphabet
+          alphabet = (char) (alphabet + shiftvalue);    
+             
+          // if shift alphabet greater than 'Z'
+          if(alphabet > 'Z') {
+              //reshift to starting position 
+              alphabet = (char) (alphabet+'A'-'Z'-1);
+          }
+          newstring = newstring + alphabet;
+         }
+         else {
+          newstring = newstring + alphabet;   
+         }
+        }
+        return newstring;
+
+
+
+    }
+    public static void arrayreverse(int[] arraytobereversed,int n)
+    {
+      int[] newarray=new int[n];
+      int j=n;
+      for(int i=0;i<n;i++)
+      {
+       newarray[j-1]=arraytobereversed[i];
+       j=j-1;
+      }
+      System.out.println("the reversed array is ");
+      for(int s=0;s<n;s++)
+      {
+       System.out.print(newarray[s]+"  ");
+      }
+    }
+    public static void arrayavg(int[] arrayforaverage)
+    {
+        float sum=0;
+        for(int j=0;j<arrayforaverage.length;j++){
+            sum += arrayforaverage[j];
+        } 
+        float average = (sum/arrayforaverage.length);
+        System.out.println("average of given numbers is : "+average);
+    }
+    public static void arraycontains(int[] arraytobesearched,int key)
+    {
+        boolean test=false;
+        for(int k=0; k<arraytobesearched.length;k++){
+            if(key == arraytobesearched[k])
+            {
+            test=true;
+            }
+        }
+        System.out.println(test);
+    }
+    
+
+}
