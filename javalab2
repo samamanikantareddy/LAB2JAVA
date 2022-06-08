@@ -1,7 +1,12 @@
+// Assignment Lab 2
+// Group Assignment 
+// A00254753 (Divya Vasudev Khemani)
+// 
+
 import java.util.IntSummaryStatistics;
 import java.util.Scanner;
 
-public class Var{
+public class ArrayTools{
 
     public static void main(String[] args){
         Scanner scanner = new Scanner(System.in);
@@ -91,9 +96,6 @@ public class Var{
          }
         }
         return newstring;
-
-
-
     }
     public static void arrayreverse(int[] arraytobereversed,int n)
     {
